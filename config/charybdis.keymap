@@ -33,6 +33,13 @@
         };
     };
 
+/ {
+    trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&trackball>; // This must match the label in your shield's .dtsi
+    };
+};
+
     keymap {
         compatible = "zmk,keymap";
 
