@@ -1,10 +1,10 @@
-#include <dt-bindings/zmk/mouse.h>
-#include <behaviors/mouse_keys.dtsi>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/input_transform.h>
+#include <input/processors.dtsi> // This is critical for &zip_xy_scaler and others
 
 / {
     chosen { zmk,matrix_transform = &default_transform; };
@@ -36,7 +36,19 @@
 / {
     trackball_listener {
         compatible = "zmk,input-listener";
-        device = <&trackball>; // This must match the label in your shield's .dtsi
+        device = <&trackball>;
+        /* SNIPE MODE: When Layer 4 is active, slow down the cursor */
+        /* Formula: res-cpi (800) * 1 / 2 = 400 effective CPI */
+        snipe_override {
+            layers = <4>;
+            input-processors = <&zip_xy_scaler 1 2>; 
+        };
+
+        /* SCROLL MODE: When Layer 5 is active, move wheel instead of cursor */
+        scroll_override {
+            layers = <5>;
+            input-processors = <&zip_xy_to_scroll_mapper>;
+        };
     };
 };
 
