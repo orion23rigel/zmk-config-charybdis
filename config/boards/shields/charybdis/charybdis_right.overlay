@@ -1,3 +1,5 @@
+#define KEYMAP_DRAW_TRACKBALL
+
 #include "charybdis.dtsi"
 
 &default_transform {
