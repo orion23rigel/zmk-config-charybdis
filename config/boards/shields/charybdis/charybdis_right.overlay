@@ -59,7 +59,7 @@
         invert-x;
         invert-y;
 	    /* Add this: Sets your base sensitivity (Old CONFIG_PMW3610_CPI) */
-    	res-cpi = <800>;
+    	cpi = <800>;
         smart-algorithm;
     };
 };
