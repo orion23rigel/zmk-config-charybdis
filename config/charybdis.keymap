@@ -33,7 +33,10 @@
         };
     };
 
-    /omit-if-no-ref/ trackball_listener {
+
+#ifdef KEYMAP_DRAW_TRACKBALL
+    /* This only runs if KEYMAP_DRAW_TRACKBALL is defined in the shield */    
+    trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
         /* SNIPE MODE: When Layer 4 is active, slow down the cursor */
