@@ -51,11 +51,8 @@
         swap-xy;
         invert-x;
         invert-y;
-
-        /*   optional features   */
-        snipe-layers = <4>;
-        scroll-layers = <5>;
-        /* automouse-layer = <4>; */
+	    /* Add this: Sets your base sensitivity (Old CONFIG_PMW3610_CPI) */
+    	res-cpi = <800>;
     };
 };
 
