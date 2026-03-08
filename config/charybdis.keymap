@@ -34,7 +34,7 @@
     };
 };
 / {
-    trackball_listener {
+    /omit-if-no-ref/ trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
         /* SNIPE MODE: When Layer 4 is active, slow down the cursor */
@@ -50,6 +50,7 @@
             input-processors = <&zip_xy_to_scroll_mapper>;
         };
     };
+};
 
     keymap {
         compatible = "zmk,keymap";
