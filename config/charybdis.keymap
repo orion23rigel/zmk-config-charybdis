@@ -103,7 +103,7 @@
             >;
         };
 
-        NAV {
+        NUM_LEFT {
             bindings = <
 &kp F12          &kp F1          &kp F2           &kp F3             &kp F4           &kp F5    &kp F6                &kp F7  &kp F8  &kp F9  &kp F10          &kp F11
 &trans           &kp SCROLLLOCK  &kp PAUSE_BREAK  &kp UP             &kp EQUAL        &kp LBRC              &kp RBRC  &kp N7  &kp N8  &kp N9  &kp KP_PLUS      &trans
@@ -113,7 +113,7 @@
             >;
         };
 
-        SYM {
+        NUM_RIGHT {
             bindings = <
 &kp F12  &kp F1         &kp F2     &kp F3             &kp F4            &kp F5         &kp F6                         &kp F7            &kp F8     &kp F9        &kp F10        &kp F11
 &trans   &kp EXCL       &kp AT     &kp HASH           &kp DLLR          &kp PRCNT                          &kp CARET  &kp AMPS          &kp STAR   &kp QUESTION  &kp SQT        &trans
