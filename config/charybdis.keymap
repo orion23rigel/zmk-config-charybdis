@@ -99,8 +99,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* [0] BASE */
-        default_layer {
+        BASE {
             bindings = <
 &kp ESC    &kp N1      &kp N2      &kp N3      &kp N4      &kp N5      &kp N6      &kp N7      &kp N8      &kp N9      &kp N0      &kp MINUS
 &kp TAB    &kp Q       &kp W       &kp E       &kp R       &kp T       &kp Y       &kp U       &kp I       &kp O       &kp P       &kp BSLH
@@ -110,8 +109,7 @@
             >;
         };
 
-        /* [1] SYM */
-        sym_layer {
+        NUM_LEFT {
             bindings = <
 &td_til    &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT   &kp CIRC    &kp AMPR    &kp ASTR    &kp LPAR    &kp RPAR    &kp UNDERSCORE
 &kp LNLCK  &kp LBRC    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp RBRC    &kp PSCRN   &none       &kp UP      &none       &kp LA(F4)  &trans
@@ -121,8 +119,7 @@
             >;
         };
 
-        /* [2] NAV */
-        nav_layer {
+        NUM_RIGHT {
             bindings = <
 &td_f12    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11
 &trans     &kp PSCRN   &none       &kp UP      &none       &kp LA(F4)  &kp LBRC    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp RBRC    &kp LNLCK
@@ -132,8 +129,7 @@
             >;
         };
 
-        /* [3] MOUSE & CONFIG */
-        mouse_layer {
+        MOUSE {
             bindings = <
 &td_esc    &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &endash
 &trans     &kp DEL     &trans      &none       &none       &kp LC(F4)  &trans      &none       &none       &trans      &trans      &trans
@@ -143,8 +139,7 @@
             >;
         };
 
-        /* [4] SNIP (Target for trackball_listener snipe_override) */
-        snip_layer {
+        SNIP {
             bindings = <
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
@@ -154,8 +149,7 @@
             >;
         };
 
-        /* [5] SCROLL (Target for trackball_listener scroll_override) */
-        scroll_layer {
+        SCROLL {
             bindings = <
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
