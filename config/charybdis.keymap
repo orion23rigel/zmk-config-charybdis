@@ -23,7 +23,6 @@
     chosen { zmk,matrix_transform = &default_transform; };
 
     macros {
-        /* Macro for QMK's ENDASH using Alt codes */
         endash: endash {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -37,7 +36,6 @@
     };
 
     behaviors {
-        /* Tap Dance definitions to return to Layer 0 */
         td_esc: td_esc {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -60,7 +58,6 @@
 
     combos {
         compatible = "zmk,combos";
-        /* Map QMK Combos to 4x6 Matrix Indices (X+DOT, C+COMMA, V+M) */
         combo_to_layer_1 {
             timeout-ms = <50>;
             key-positions = <38 45>; 
@@ -78,19 +75,16 @@
         };
     };
 
-    /* Trackball Logic: Conditional for Left/Right Build */
 #ifdef KEYMAP_DRAW_TRACKBALL
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-
         snipe_override {
-            layers = <4>; // SNIP layer
+            layers = <4>;
             input-processors = <&zip_xy_scaler 1 2>; 
         };
-
         scroll_override {
-            layers = <5>; // SCROLL layer
+            layers = <5>;
             input-processors = <&zip_xy_to_scroll_mapper>;
         };
     };
@@ -105,37 +99,37 @@
 &kp TAB    &kp Q       &kp W       &kp E       &kp R       &kp T       &kp Y       &kp U       &kp I       &kp O       &kp P       &kp BSLH
 &kp LALT   &mt LCTRL A &mt LGUI S  &mt LALT D  &mt LSHFT F &kp G       &kp H       &mt RSHFT J &mt RALT K  &mt RGUI L  &mt RCTRL SEMI &kp SQT
 &kp LSHFT  &kp Z       &lt 1 X     &lt 2 C     &lt 3 V     &kp B       &kp N       &lt 3 M     &lt 2 COMMA &lt 1 DOT   &kp SLASH   &kp RALT
-           &mo 5       &kp SPACE   &kp BSPC    &mkp MB1    &kp ENTER   &mkp MB1    &mkp MB2    &mkp MB2
+&kp LCTRL  &mo 5       &kp SPACE   &kp BSPC    &mkp MB1                &kp ENTER   &mkp MB1    &mkp MB2
             >;
         };
 
         NUM_LEFT {
             bindings = <
-&kp TILDE    &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT   &kp CIRC    &kp AMPR    &kp ASTR    &kp LPAR    &kp RPAR    &kp UNDERSCORE
-&kp LNLCK  &kp LBRC    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp RBRC    &kp PSCRN   &none       &kp UP      &none       &kp LA(F4)  &trans
-&kp KP_EQUAL &kp KP_PLUS &kp KP_N4 &kp KP_N5   &kp KP_N6   &kp KP_MINUS &none      &kp LEFT    &kp DOWN    &kp RIGHT   &kp LA(LEFT) &trans
-&kp KP_DOT &kp KP_MULTIPLY &kp KP_N1 &kp KP_N2 &kp KP_N3   &kp KP_DIVIDE &none     &kp PG_UP   &kp PG_DN   &kp LA(LEFT) &kp LA(RIGHT) &trans
-           &trans      &trans      &kp DEL     &trans      &trans      &trans      &trans      &kp KP_N0
+&td_til    &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT   &kp CARET   &kp AMPS    &kp ASTR    &kp LPAR    &kp RPAR    &kp UNDER
+&kp KP_NUM &kp LBRC    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp RBRC    &kp PSCRN   &none       &kp UP      &none       &kp LA(F4)  &trans
+&kp EQUAL  &kp KP_PLUS &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp MINUS   &none       &kp LEFT    &kp DOWN    &kp RIGHT   &kp LA(LEFT) &trans
+&kp DOT    &kp KP_MULTIPLY &kp KP_N1 &kp KP_N2 &kp KP_N3   &kp KP_SLASH &none      &kp PG_UP   &kp PG_DN   &kp LA(LEFT) &kp LA(RIGHT) &trans
+&trans     &trans      &trans      &kp DEL     &trans                  &trans      &kp KP_N0   &trans
             >;
         };
 
         NUM_RIGHT {
             bindings = <
-&KP F12    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11
-&trans     &kp PSCRN   &none       &kp UP      &none       &kp LA(F4)  &kp LBRC    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp RBRC    &kp LNLCK
+&td_f12    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5      &kp F6      &kp F7      &kp F8      &kp F9      &kp F10     &kp F11
+&trans     &kp PSCRN   &none       &kp UP      &none       &kp LA(F4)  &kp LBRC    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp RBRC    &kp KP_NUM
 &trans     &none       &kp LEFT    &kp DOWN    &kp RIGHT   &kp LA(LEFT) &kp KP_PLUS &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_MINUS &kp KP_EQUAL
 &trans     &none       &kp PG_UP   &kp PG_DN   &kp LA(LEFT) &kp LA(RIGHT) &kp KP_MULTIPLY &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DIVIDE &kp KP_DOT
-           &trans      &trans      &kp DEL     &trans      &trans      &trans      &trans      &kp KP_N0
+&trans     &trans      &trans      &kp DEL     &trans                  &trans      &kp KP_N0   &trans
             >;
         };
 
         MOUSE {
             bindings = <
-&trans    &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &endash
+&td_esc    &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &trans      &endash
 &trans     &kp DEL     &trans      &none       &none       &kp LC(F4)  &trans      &none       &none       &trans      &trans      &trans
 &trans     &trans      &trans      &trans      &trans      &kp LA(LEFT) &trans     &trans      &trans      &trans      &trans      &trans
 &trans     &trans      &mo 5       &mo 4       &kp LA(LEFT) &kp LA(RIGHT) &trans   &trans      &mo 4       &mo 5       &mkp MB3    &trans
-           &trans      &trans      &trans      &trans      &mkp MB3    &kp DEL     &trans      &trans
+&trans     &trans      &trans      &trans      &mkp MB3                &kp DEL     &trans      &trans
             >;
         };
 
@@ -145,7 +139,7 @@
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
 &trans &trans &trans &trans &trans &trans &trans &mkp MB1 &mkp MB2 &mkp MB3 &trans &trans
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-              &trans &trans &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans        &trans &trans &trans
             >;
         };
 
@@ -155,7 +149,7 @@
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
 &trans &trans &trans &trans &trans &trans &trans &mkp MB1 &mkp MB2 &mkp MB3 &trans &trans
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-              &trans &trans &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans        &trans &trans &trans
             >;
         };
     };
